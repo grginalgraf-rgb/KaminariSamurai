@@ -1,0 +1,156 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+@import 'shadcn/tailwind.css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-grotesk), 'Space Grotesk', system-ui, sans-serif;
+  --font-serif: var(--font-shippori), 'Shippori Mincho', serif;
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --color-destructive: var(--destructive);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+}
+
+:root {
+  color-scheme: dark;
+  /* ink night */
+  --background: #0b0d1f;
+  --foreground: #f1eefb;
+  --card: #14162e;
+  --card-foreground: #f1eefb;
+  --popover: #14162e;
+  --popover-foreground: #f1eefb;
+  /* lightning gold */
+  --primary: #f5cf72;
+  --primary-foreground: #14110a;
+  --secondary: rgba(241, 238, 251, 0.08);
+  --secondary-foreground: #f1eefb;
+  --muted: rgba(241, 238, 251, 0.08);
+  --muted-foreground: #b7b2cf;
+  /* sakura */
+  --accent: #ffb3c8;
+  --accent-foreground: #14110a;
+  --destructive: #ffb3c8;
+  --border: rgba(241, 238, 251, 0.16);
+  --input: rgba(241, 238, 251, 0.16);
+  --ring: #f5cf72;
+  --radius: 0.75rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html,
+  body {
+    @apply bg-background text-foreground;
+    overscroll-behavior: none;
+  }
+  body {
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@keyframes era-card {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.15);
+  }
+  14% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  78% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.9);
+  }
+}
+
+@keyframes era-text {
+  0% {
+    opacity: 0;
+    letter-spacing: 0.7em;
+    filter: blur(6px);
+  }
+  30% {
+    opacity: 1;
+    letter-spacing: 0.18em;
+    filter: blur(0);
+  }
+  100% {
+    opacity: 1;
+    letter-spacing: 0.12em;
+  }
+}
+
+@keyframes combo-pulse {
+  0% {
+    transform: scale(1.6);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes gold-glow {
+  0%,
+  100% {
+    text-shadow: 0 0 12px rgba(245, 207, 114, 0.55);
+  }
+  50% {
+    text-shadow: 0 0 28px rgba(245, 207, 114, 0.95);
+  }
+}
+
+.anim-era-card {
+  animation: era-card 1000ms ease-out forwards;
+}
+.anim-era-text {
+  animation: era-text 1000ms ease-out forwards;
+}
+.anim-combo-pulse {
+  animation: combo-pulse 260ms cubic-bezier(0.2, 1.4, 0.4, 1);
+}
+.anim-rise-in {
+  animation: rise-in 520ms cubic-bezier(0.2, 0.9, 0.3, 1) both;
+}
+.anim-gold-glow {
+  animation: gold-glow 1.6s ease-in-out infinite;
+}
